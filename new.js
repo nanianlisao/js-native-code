@@ -6,6 +6,7 @@ function objectFactory() {
   const obj = new Object();
   // 取到构造函数
   const Constructor = [].shift.call(arguments);
+
   obj.__proto__ = Constructor.prototype;
 
   const ret = Constructor.apply(obj, arguments);
@@ -32,3 +33,11 @@ console.log(person.habit); // Games
 console.log(person.strength); // 60
 
 person.sayYourName(); // I am Kevin
+
+function A() {}
+
+const a = new A();
+
+console.log(a.__proto__ === A.prototype); // true
+
+console.log(a.constructor === A); // true
