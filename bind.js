@@ -17,7 +17,7 @@ Function.prototype.cxBind = function (obj) {
   const newFn = function () {
     // 这里获取到bind返回的函数的参数
     const arg2 = [].slice.call(arguments);
-    //通过constructor判断调用方式，为true this指向实例，否则为obj
+    // "当 bind 返回的函数作为构造函数的时候，bind 时指定的 this 值会失效"
     fn.apply(_fn.prototype.isPrototypeOf(this) ? this : obj, [
       ...args1,
       ...arg2,
